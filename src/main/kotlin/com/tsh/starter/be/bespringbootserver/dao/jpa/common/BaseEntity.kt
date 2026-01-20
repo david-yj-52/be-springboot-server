@@ -16,8 +16,10 @@ abstract class BaseEntity {
 
     var siteId: String? = null
 
-    var rsn_cd : String? = null
-    var trns_cm : String? = null
+    var evnt_nm : String? = null
+    var prv_evnt_nm : String? = null
+    var act_rsn_cd : String? = null
+    var act_cm : String? = null
     var tid : String? = null
 
     @Enumerated(EnumType.STRING)
