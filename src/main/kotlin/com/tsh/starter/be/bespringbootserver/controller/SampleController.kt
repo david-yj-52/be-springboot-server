@@ -1,6 +1,6 @@
 package com.tsh.starter.be.bespringbootserver.controller
 
-import com.tsh.starter.be.bespringbootserver.model.intf.HelloResponseIvo
+import com.tsh.starter.be.bespringbootserver.model.intf.out.HelloResponseIvo
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/sample")
 class SampleController {
 
     @GetMapping("/hello")

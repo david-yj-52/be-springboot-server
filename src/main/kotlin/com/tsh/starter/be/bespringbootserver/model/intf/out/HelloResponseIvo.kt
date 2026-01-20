@@ -1,4 +1,4 @@
-package com.tsh.starter.be.bespringbootserver.model.intf
+package com.tsh.starter.be.bespringbootserver.model.intf.out
 
 import java.time.LocalDateTime
 

@@ -1,7 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.9.25" // Spring Boot 3.4와 안정적인 호환성
+    kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.4.1" // 요청하신 3.4 버전
+    id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.asciidoctor.jvm.convert") version "4.0.2"
     kotlin("plugin.jpa") version "1.9.25"
@@ -20,22 +20,32 @@ repositories {
     mavenCentral()
 }
 
+// [핵심] 모든 의존성에서 기본 로깅(Logback)을 제거합니다.
+configurations {
+    all {
+        exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+    }
+}
+
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
+    // 이제 개별적인 exclude를 일일이 적을 필요가 없습니다.
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-web") // REST API를 위한 필수 스타터
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-quartz")
 
+    // Log4j2를 로깅 엔진으로 사용합니다.
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // Spring Boot 기본 Jackson 사용
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    // MyBatis 3.4 호환 버전
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
 
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")

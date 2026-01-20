@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface GnUsrMstrInfRepository : JpaRepository<GnUsrMstrInfEntity, String> {
 
-    fun findBySiteIdAndUsrKey(siteId: String, usrKey: String): List<GnUsrMstrInfEntity>
+    fun findBySiteIdAndUsrKey(siteId: String, usrKey: String): GnUsrMstrInfEntity?
 }
