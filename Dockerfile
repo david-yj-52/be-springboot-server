@@ -3,6 +3,7 @@ FROM gradle:8.5-jdk21 AS build
 WORKDIR /app
 COPY . .
 # 빌드 속도를 위해 데몬 끄고 테스트 제외
+RUN chmod +x gradlew
 RUN ./gradlew bootJar --no-daemon -x test
 
 # 2단계: Run
