@@ -2,13 +2,11 @@ package com.tsh.starter.be.bespringbootserver.model.intf.`in`
 
 import com.tsh.starter.be.bespringbootserver.constant.SocialType
 import com.tsh.starter.be.bespringbootserver.constant.UserCategory
-import com.tsh.starter.be.bespringbootserver.constant.UserGrade
 
 data class NewUserAddReqIvo(
+    val code: String,       // Next.js에서 보낸 구글 인가 코드
+    // 유저가 추가로 입력한 정보
     val siteId: String,
-    val userKey: String,
-    val userName: String,
-    val userGrade: UserGrade,
     val userCategory: UserCategory,
     val socialType: SocialType
 

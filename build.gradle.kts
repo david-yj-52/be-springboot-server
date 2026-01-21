@@ -54,6 +54,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // JSON 파싱용
+
+    implementation("com.google.api-client:google-api-client:2.2.0") // 구글 토큰 검증용
 }
 
 kotlin {

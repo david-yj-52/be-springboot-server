@@ -3,27 +3,29 @@ package com.tsh.starter.be.bespringbootserver.service.user
 import com.tsh.starter.be.bespringbootserver.dao.jpa.gnUsrMstrInf.entity.GnUsrMstrInfEntity
 import com.tsh.starter.be.bespringbootserver.dao.jpa.gnUsrMstrInf.service.GnUsrMstrInfJpaService
 import com.tsh.starter.be.bespringbootserver.model.intf.`in`.NewUserAddReqIvo
+import com.tsh.starter.be.bespringbootserver.model.intf.internal.GoogleUserInfo
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
 
 private val logger = KotlinLogging.logger {}
 
 @Service
-class UserBizService(private val gnUsrMstrInfJpaService: GnUsrMstrInfJpaService) {
+class UserBizService(
+    private val gnUsrMstrInfJpaService: GnUsrMstrInfJpaService,
+) {
 
-    fun welcomeToNewUser(ivo: NewUserAddReqIvo): GnUsrMstrInfEntity? {
-        logger.info("siteId:{}, userKey:{}", ivo.siteId, ivo.userKey)
+    fun welcomeToNewUser(ivo: NewUserAddReqIvo, guser: GoogleUserInfo): GnUsrMstrInfEntity? {
 
         return try {
-            val user = this.fetchUser(ivo.siteId, ivo.userKey)
+            val user = this.fetchUser(ivo.siteId, guser.id)
             if (user != null) {
-                logger.warn("Existing user add again userKey:{}", ivo.userKey)
+                logger.warn("Existing user add again userKey:{}", guser.id)
                 return user
             }
 
-            val newUser = gnUsrMstrInfJpaService.saveNewUser(ivo)
+            val newUser = gnUsrMstrInfJpaService.saveNewUser(ivo, guser)
             return newUser
-            
+
         } catch (e: Exception) {
             logger.error(e) { "Failed to add user add again userKey:{}" }
             null
@@ -42,3 +44,4 @@ class UserBizService(private val gnUsrMstrInfJpaService: GnUsrMstrInfJpaService)
         }
     }
 }
+
