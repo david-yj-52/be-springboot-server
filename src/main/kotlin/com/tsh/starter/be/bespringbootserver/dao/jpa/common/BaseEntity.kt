@@ -31,4 +31,19 @@ abstract class BaseEntity {
     var crtUserId: String? = null
     var mdfyUserId: String? = null
 
+    fun <T : BaseEntity> T.copyBaseFieldsFrom(source: BaseEntity): T {
+        this.siteId = source.siteId
+        this.evnt_nm = source.evnt_nm
+        this.prv_evnt_nm = source.prv_evnt_nm
+        this.act_rsn_cd = source.act_rsn_cd
+        this.act_cm = source.act_cm
+        this.tid = source.tid
+        this.useStatCd = source.useStatCd
+        this.crtDt = source.crtDt
+        this.mdfyDt = source.mdfyDt
+        this.crtUserId = source.crtUserId
+        this.mdfyUserId = source.mdfyUserId
+        return this
+    }
+    
 }

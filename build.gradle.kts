@@ -58,6 +58,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // JSON 파싱용
 
     implementation("com.google.api-client:google-api-client:2.2.0") // 구글 토큰 검증용
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0") // 구글 토큰 검증용
 }
 
 kotlin {

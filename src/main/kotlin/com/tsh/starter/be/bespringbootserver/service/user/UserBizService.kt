@@ -14,16 +14,16 @@ class UserBizService(
     private val gnUsrMstrInfJpaService: GnUsrMstrInfJpaService,
 ) {
 
-    fun welcomeToNewUser(ivo: NewUserAddReqIvo, guser: GoogleUserInfo): GnUsrMstrInfEntity? {
+    fun welcomeToNewUser(ivo: NewUserAddReqIvo, googleUser: GoogleUserInfo): GnUsrMstrInfEntity? {
 
         return try {
-            val user = this.fetchUser(ivo.siteId, guser.id)
+            val user = this.fetchUser(ivo.siteId, googleUser.id)
             if (user != null) {
-                logger.warn("Existing user add again userKey:{}", guser.id)
+                logger.warn("Existing user add again userKey:{}", googleUser.id)
                 return user
             }
 
-            val newUser = gnUsrMstrInfJpaService.saveNewUser(ivo, guser)
+            val newUser = gnUsrMstrInfJpaService.saveNewUser(ivo, googleUser)
             return newUser
 
         } catch (e: Exception) {
