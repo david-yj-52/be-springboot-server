@@ -17,6 +17,15 @@ interface GnDplyFileInfRepository : JpaRepository<GnDplyFileInfEntity, String> {
         useStatCd: UseStatCd,
     ): GnDplyFileInfEntity?
 
+    fun findBySiteIdAndApGrpNmAndApNmAndApVersionAndOsTypAndUseStatCd(
+        siteId: String,
+        apGrpNm: String,
+        apNm: String,
+        apVersion: String,
+        osTyp: UserOsType,
+        useStatCd: UseStatCd,
+    ): GnDplyFileInfEntity?
+
     fun findBySiteIdAndApNmAndApVersionAndOsTypAndUseStatCd(
         siteId: String, apNm: String, apVersion: String, osTyp: UserOsType, useStatCd: UseStatCd,
     ): GnDplyFileInfEntity?

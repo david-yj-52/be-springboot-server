@@ -69,4 +69,16 @@ class GnDplyFileInfJpaService(
         )
     }
 
+    fun findDeployFilePath(
+        siteId: String,
+        apGrpNm: String,
+        apNm: String,
+        apVersion: String,
+        osTyp: UserOsType
+    ): GnDplyFileInfEntity? {
+        return gnDplyFileInfRepository.findBySiteIdAndApGrpNmAndApNmAndApVersionAndOsTypAndUseStatCd(
+            siteId, apGrpNm, apNm, apVersion, osTyp, UseStatCd.Usable
+        )
+    }
+
 }

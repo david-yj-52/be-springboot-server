@@ -9,14 +9,14 @@ interface ApBodyIvo {
 }
 
 inline fun <reified T : ApBodyIvo> T.toApHeadVo(
-    src: InterfaceSystemType? = InterfaceSystemType.SERVER,
-    tgt: InterfaceSystemType? = InterfaceSystemType.SERVER,
+    src: InterfaceSystemType? = InterfaceSystemType.Server,
+    tgt: InterfaceSystemType? = InterfaceSystemType.Server,
     tid: String? = IdAndTimeUtil.generateTid()
 
 ): ApHeadVo {
     return ApHeadVo(
-        src = src ?: InterfaceSystemType.SERVER,
-        tgt = tgt ?: InterfaceSystemType.SERVER,
+        src = src ?: InterfaceSystemType.Server,
+        tgt = tgt ?: InterfaceSystemType.Server,
         mid = IdAndTimeUtil.generateTid(),
         tid = tid,
         enm = this::class.simpleName ?: "Unknown"

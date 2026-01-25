@@ -14,9 +14,7 @@ data class SampleBodyIvo(
     override val userId: String
 ) : ApBodyIvo {
     companion object {
-        val SRC = InterfaceSystemType.UI
-        val URI = "/sameple"
-        val METHOD = "GET"
+        val SRC = InterfaceSystemType.Ui
 
     }
 }
